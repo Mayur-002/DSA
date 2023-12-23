@@ -1,0 +1,139 @@
+ import java.util.Stack;
+ 
+ public class Main{
+	 public static void main(String[] args) {
+		Stack<String>stack = new Stack<String>();
+		
+		stack.push("Minecraft");
+		stack.push("Skyrim");
+		stack.push("Doom");
+		stack.push("Borderlands");
+		stack.push("FFVII");
+		stack.pop();
+		//stack.pop();
+		//System.out.println(stack);
+		//System.out.println(stack.empty());
+		System.out.println(stack.peek());
+
+
+		
+	}
+ }
+
+whole operation of Stack data structure with the help of string ......operation like push,pop,is stack empty,peek,create stack
+.............................................................................................................................................................................................
+>> detail operation code
+
+>>import java.util.*;
+public class Main 
+{
+    int stack[],tos,MaxSize;//three instance variables stack (an array to represent the stack), tos (top of stack), and MaxSize (maximum size of the stack).
+    
+    void createStack(int size)//method is used to create a stack.
+    {
+        stack=new int[size];
+        MaxSize=size;
+        tos=-1;//stack is empty
+    }
+    void push(int e)
+    {
+        tos++;
+        stack[tos]=e;
+        //push method adds an element e to the top of the stack. It increments tos 
+    }
+    int pop()
+    {
+        int temp=stack[tos];
+        tos--;
+        return(temp);
+        // It first retrieves the element, then decrements tos to remove it from the stack.
+        //pop method removes and returns the element from the top of the stack.
+    }
+    int peek()
+    {
+        return(stack[tos]);
+       // The peek method returns the element at the top of the stack without removing it.
+    }
+    boolean is_full()//is_full method checks whether the stack is full
+    {
+        if(tos==MaxSize-1)
+            return true;
+        else
+            return false;
+    }
+     boolean is_empty()
+    {
+        if(tos==-1)
+            return true;
+        else
+            return false;
+    }
+     
+     void print_stack()
+     {
+         for(int i=tos;i>-1;i--)
+             System.out.println(stack[i]);
+     }
+    
+     public static void main(String args[])
+     {
+         Scanner in=new Scanner(System.in);
+         System.out.println("Enter size of stack:");
+         int size=in.nextInt();
+         Main obj=new Main ();
+         obj.createStack(size);
+         int ch;
+         do
+         {
+           System.out.println("\n1.Push\n2.Pop\n3.Peek\n4.Print\n0.Exit\n:");
+           ch=in.nextInt();//read1
+           switch(ch)
+           {
+               case 1:
+                   if(!obj.is_full())
+                   {
+                       System.out.println("\nEnter a number:");
+                       int no=in.nextInt();
+                       obj.push(no);
+                       System.out.println("Pushed "+no);
+                   }
+                   else
+                       System.out.println("Stack is Full");
+                   break;
+               case 2:
+                    if(!obj.is_empty())
+                   {
+                       System.out.println("Poped "+obj.pop());
+                   }
+                   else
+                       System.out.println("Stack is Empty");
+                   break;
+               case 3:
+                    if(!obj.is_empty())
+                   {
+                       System.out.println("Element at peek: "+obj.peek());
+                   }
+                   else
+                       System.out.println("Stack is Empty");
+                   break;
+               case 4:
+                    if(!obj.is_empty())
+                   {
+                       System.out.println("Elements on stack are");
+                       obj.print_stack();
+                   }
+                    else
+                       System.out.println("Stack is Empty");
+                   break;
+               case 0:
+                       System.out.println("Exiting");
+                   break;
+               default:
+                       System.out.println("Wrong Choice");
+                   break;
+           }
+             
+         }while(ch!=0);
+     }
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
